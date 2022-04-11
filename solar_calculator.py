@@ -261,9 +261,9 @@ def plot_solar_data(data, sol_curr, sys_curr, batt_size, sys_volt, max_dd, file_
     plt.tight_layout()
     
     if file_name is None:
-        plot_file = os.getcwd() + '/plots/' + "solar_plot_{}Hours_eff_{}{}SolarHours_{}.png".format(len(data['t_arr']), eff_str, data['solar_input'], datetime.now().strftime("%m-%d-%Y_%H-%M-%S"))
+        plot_file = os.getcwd() + "/plots/" + "solar_plot_{}Hours_eff_{}{}SolarHours_{}.png".format(len(data['t_arr']), eff_str, data['solar_input'], datetime.now().strftime("%m-%d-%Y_%H-%M-%S"))
     else:
-        plot_file = os.getcwd() + '/plots/' + "solar_plot_{}Hours_eff_{}{}SolarHours_{}.png".format(len(data['t_arr']), eff_str, data['solar_input'], file_name)
+        plot_file = os.getcwd() + "/plots/" + "solar_plot_{}Hours_eff_{}{}SolarHours_{}.png".format(len(data['t_arr']), eff_str, data['solar_input'], file_name)
 
 
     plt.savefig(plot_file)
@@ -277,10 +277,11 @@ if __name__ == "__main__":
     parser.add_argument('-di', '--device_current', type=float, required=True, help='The maximum current consumed by the system in Amps. Ex) 0.5. No Default. THIS VALUE MUST BE PROVIDED.')
     parser.add_argument('-b', '--battery_size', type=float, required=True, help='The size of the battery in Amp-Hours. Ex) 50.0. No Default. THIS VALUE MUST BE PROVIDED')
     parser.add_argument('-v', '--voltage', type=float, required=True, help='The voltage provided by the solar charger to the load. Ex) 12.0. No Default. THIS VALUE MUST BE PROVIDED')
-    parser.add_argument('-t', '--time_hours', type=int, help='The time in hours you would like to run. Ex.) 96', default=168)
-    parser.add_argument('-dd', '--max_discharge_depth', type=float, help='The maximum discharge depth of your battery. Ex) 0.50. Default assumes LiFePO4 battery, which is generally 20%.', default=.20)
+    parser.add_argument('-t', '--time_hours', type=int, help='The time in hours you would like to run. Ex) 96', default=168)
+    parser.add_argument('-dd', '--max_discharge_depth', type=float, help='The maximum discharge depth of your battery. Ex) 0.50. Default assumes LiFePO4 battery, which is generally 20 percent.', default=.20)
     parser.add_argument('-fn', '--plot_file_name', type=str, help='The file name of the pltos you want to save. If no name is provided, plot name will default to solar_plot_[solar hours]_m-d-Y_H-M-S.png. Recommend inputing [solar_input]_[device_current]_[battery_size]_[voltage]. Ensure there are no . characters, so conversion to milliamps may be required. Ex) 2790mA_300mA_10AHr_12V', default=None)
-    parser.add_argument('-ef', '--panel_efficiencies', nargs='+', help='A list of the panel efficiencies for calculation. Minimum efficiency is 0.0, max is 1.0. Ex.) 0.1 0.3 0.9. Default is 0.0-1.0', default=[0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0])
+    parser.add_argument('-ef', '--panel_efficiencies', nargs='+', help='A list of the panel efficiencies for calculation. Minimum efficiency is 0.0, max is 1.0. Ex) 0.1 0.3 0.9. Default is 0.0-1.0', default=[0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0])
+    
     args = parser.parse_args()
 
     print()
